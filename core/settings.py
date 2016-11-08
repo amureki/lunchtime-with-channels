@@ -3,6 +3,7 @@ from urllib.parse import urlparse
 
 import dj_database_url
 from django.core.urlresolvers import reverse_lazy
+from django.utils.translation import ugettext_lazy as _
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -42,6 +43,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'core.middleware.UsernameMiddleware',
 ]
@@ -98,6 +100,12 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LANGUAGE_CODE = 'en-us'
+
+LANGUAGES = (
+    ('de', _('German')),
+    ('en-us', _('English')),
+)
+
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
